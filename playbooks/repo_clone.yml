@@ -1,0 +1,17 @@
+---
+- name: Pull Code from GitHub and Execute a Command
+  hosts: all
+  tasks:
+    - name: Clone or update the GitHub repository
+      git:
+        repo: https://github.com/rexdivakar/semaphore_ansible/
+        dest: /tmp
+        update: yes
+        version: main
+
+    - name: Execute a Command
+      command: |
+        cd /tmp
+        python /tmp/semaphore_ansible/scripts/test.py
+      args:
+        chdir: /tmp/semaphore_ansible
