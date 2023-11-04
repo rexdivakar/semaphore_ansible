@@ -4,7 +4,7 @@
   tasks:
     - name: Clone or update the GitHub repository
       git:
-        repo: https://github.com/rexdivakar/semaphore_ansible/
+        repo: git@github.com:rexdivakar/semaphore_ansible.git
         dest: /tmp/ansible_build
         update: yes
         version: main
