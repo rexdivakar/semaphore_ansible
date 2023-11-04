@@ -1,12 +1,11 @@
 ---
 - name: Check for Updates Without Applying on Debian-based Systems
-  hosts: all
+  hosts: your_target_hosts
   tasks:
     - name: Check for available updates
-      apt:
-        list: upgrades
+      command: "apt list --upgradable"
       register: available_updates
 
     - name: Display available updates
       debug:
-        var: available_updates
+        var: available_updates.stdout
