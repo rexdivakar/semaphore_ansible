@@ -5,13 +5,17 @@
     - name: Clone or update the GitHub repository
       git:
         repo: https://github.com/rexdivakar/semaphore_ansible/
-        dest: /tmp
+        dest: /tmp/ansible_build
         update: yes
         version: main
+      register: git_output
+      notify: 
+        - Execute Command
 
     - name: Execute a Command
-      command: |
-        cd /tmp
-        python /tmp/semaphore_ansible/scripts/test.py
-      args:
-        chdir: /tmp/semaphore_ansible
+      shell: /home/zki2s1l/miniconda3/bin/python /tmp/ansible_build/scripts/test.py
+      register: command_output
+
+    - name: Display the output of the Python script execution
+      debug:
+        var: command_output.stdout
