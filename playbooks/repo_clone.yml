@@ -19,8 +19,9 @@
 
     - name: Display the output of the Python script execution
       debug:
-        var: command_output.stdout
+        var: command_output.stdout_lines
 
+        
   handlers:
     - name: Delete Cloned Repo
       file:
