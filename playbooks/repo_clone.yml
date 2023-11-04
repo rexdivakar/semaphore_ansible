@@ -20,13 +20,6 @@
     - name: Display the output of the Python script execution
       debug:
         var: command_output.stdout
-    
-    - name: Notify Discord on Failure
-      community.general.discord:
-        webhook_id: your_webhook_id
-        webhook_token: 'https://discord.com/api/webhooks/1170236764263284757/_cjqGUWTmT8G-TWFMH7MRcxuEwHBESdZjNkJ5bm6qQlOvAu1UQh4S0e6dhrOeKcsxc5D'
-        content: "An error occurred while executing the Ansible playbook. Here's the error message:\n\n{{ command_output.stderr }}"
-        when: command_output.failed
 
   handlers:
     - name: Delete Cloned Repo
