@@ -1,5 +1,5 @@
 ---
-- name: Pull Code from GitHub and Execute a Command
+- name: Pull Code from GitHub, Execute a Command, and Delete the Cloned Repo
   hosts: all
   tasks:
     - name: Clone or update the GitHub repository
@@ -9,8 +9,9 @@
         update: yes
         version: main
       register: git_output
-      notify: 
+      notify:
         - Execute Command
+        - Delete Cloned Repo
 
     - name: Execute a Command
       shell: /home/zki2s1l/miniconda3/bin/python /tmp/ansible_build/scripts/test.py
@@ -19,3 +20,9 @@
     - name: Display the output of the Python script execution
       debug:
         var: command_output.stdout
+
+  handlers:
+    - name: Delete Cloned Repo
+      file:
+        path: /tmp/ansible_build
+        state: absent
