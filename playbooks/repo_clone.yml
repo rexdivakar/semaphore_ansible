@@ -4,7 +4,7 @@
   tasks:
     - name: Clone or update the GitHub repository
       git:
-        repo: git@github.com:rexdivakar/semaphore_ansible.git
+        repo: https://github.com/rexdivakar/semaphore_ansible/
         dest: /tmp/ansible_build
         update: yes
         version: main
@@ -19,13 +19,10 @@
 
     - name: Display the output of the Python script execution
       debug:
-        var: command_output.stdout_lines
+        var: command_output.stdout
 
-        
   handlers:
     - name: Delete Cloned Repo
       file:
         path: /tmp/ansible_build
         state: absent
-
-
