@@ -1,0 +1,7 @@
+---
+- name: Execute Docker Command
+  hosts: your_target_host
+  become: yes
+  tasks:
+    - name: Execute Docker Command
+      command: "docker exec -it screener bash -c 'python /opt/program/src/data_loader.py'"
