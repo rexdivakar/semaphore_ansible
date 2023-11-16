@@ -4,7 +4,7 @@
   become: yes
   tasks:
     - name: Execute Docker Command
-      command: "1-5 docker exec -it screener bash -c 'python /opt/program/src/screenipy.py'"
+      command: "docker exec -it screener bash -c 'python /opt/program/src/screenipy.py'"
       register: docker_command_result
 
     - name: Display Command Output
