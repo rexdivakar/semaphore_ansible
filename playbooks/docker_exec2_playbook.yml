@@ -1,0 +1,12 @@
+---
+- name: Execute Docker Command
+  hosts: all
+  become: yes
+  tasks:
+    - name: Execute Docker Command
+      command: "docker exec -it screener bash -c 'python /opt/program/src/data_loader.py'"
+      register: docker_command_result
+
+    - name: Display Command Output
+      debug:
+        var: docker_command_result.stdout_lines
